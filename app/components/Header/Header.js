@@ -12,7 +12,15 @@ export default class Header extends Component<Props> {
     return (
       <div className={styles.header}>
         <div className={styles.menuTrigger}>
-          <i className="fa fa-bars"></i>
+          <i className="fa fa-bars" />
+        </div>
+        <div className={styles.right}>
+          <div className={styles.controls}>
+            adfasdfasdf
+          </div>
+          <div className={styles.menuTrigger}>
+            <i className="fa fa-bars" />
+          </div>
         </div>
       </div>
     );

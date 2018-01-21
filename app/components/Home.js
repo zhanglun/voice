@@ -11,9 +11,9 @@ export default class Home extends Component<Props> {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         <Header />
-        <div className={styles.container} data-tid="container">
+        <div className={styles.inner} data-tid="container">
           <h2>Voice</h2>
           <Link to="/counter">to Counter</Link>
         </div>

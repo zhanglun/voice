@@ -1,15 +1,15 @@
 .container {
   position: absolute;
-  top: 30%;
-  left: 10px;
-  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.container h2 {
+.inner h2 {
   font-size: 5rem;
 }
 
-.container a {
+.inner a {
   font-size: 1.4rem;
 }
-
