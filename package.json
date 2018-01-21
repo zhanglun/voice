@@ -14,7 +14,7 @@
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
     "lint": "cross-env NODE_ENV=development eslint --cache --format=node_modules/eslint-formatter-pretty .",
     "lint-fix": "npm run lint -- --fix",
-    "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
+    "lint-styles": "stylelint app/*.css app/components/*.css --syntax less",
     "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
     "package": "npm run build && build --publish never",
     "package-all": "npm run build && build -mwl",
@@ -92,7 +92,7 @@
     "react",
     "redux",
     "flow",
-    "sass",
+    "less",
     "webpack",
     "hot",
     "reload"
@@ -101,7 +101,7 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
-      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+      "\\.(css|less|less)$": "identity-obj-proxy"
     },
     "moduleFileExtensions": [
       "js"
@@ -168,13 +168,13 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.0.4",
     "jsdom": "^11.5.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "minimist": "^1.2.0",
-    "node-sass": "^4.7.2",
     "npm-logical-tree": "^1.2.0",
     "react-test-renderer": "^16.2.0",
     "redux-logger": "^3.0.6",
     "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
     "sinon": "^4.1.4",
     "spectron": "^3.7.2",
     "style-loader": "^0.19.1",
@@ -193,6 +193,7 @@
     "electron-debug": "^1.5.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
+    "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.0.0-beta.13",

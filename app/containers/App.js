@@ -10,7 +10,8 @@ export default class App extends React.Component<Props> {
 
   render() {
     return (
-      <div>
+      <div className="App">
+        <div className="bg bg-blur"></div>
         {this.props.children}
       </div>
     );
