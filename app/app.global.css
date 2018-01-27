@@ -9,7 +9,6 @@ body {
   position: relative;
   color: white;
   height: 100vh;
-  background-color: #232c39;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
   -webkit-font-smoothing: antialiased;
@@ -44,8 +43,6 @@ a:hover {
 }
 
 .bg {
-  background-image: url("./statics/images/1.jpg");
-  background-size: cover;
   position: fixed;
   top: 0;
   right: 0;
@@ -53,14 +50,21 @@ a:hover {
   left: 0;
 }
 
-.bg-blur {
-  float: left;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+.bg::after {
+  content: "";
+  background-image: url("./statics/images/1.jpg");
   background-size: cover;
+  background-color: red;
+  margin: -30px;
   filter: blur(15px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
+
 
 #root {
   width: 100%;
