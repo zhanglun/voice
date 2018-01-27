@@ -28,13 +28,7 @@ export default class Home extends Component<Props> {
     return (
       <div className={styles.container}>
         <Header handleToggle={toggleSidebar} />
-        {/*<ReactCSSTransitionGroup*/}
-          {/*transitionName="example"*/}
-          {/*transitionEnterTimeout={500}*/}
-          {/*transitionLeaveTimeout={300}*/}
-        {/*>*/}
-        <Sidebar show={home.sidebarStatus} handleToggle={toggleSidebar} />
-        {/*</ReactCSSTransitionGroup>*/}
+        <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
         <div className={styles.inner} data-tid="container">
           <h2>Home</h2>
           <span data-tclass="btn" onClick={toggleSidebar}>prop toggle{home.sidebarStatus}</span>
