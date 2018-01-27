@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 
 import styles from './Header.less';
 
-type Props = {};
+type Props = {
+  handleToggle: () => void
+};
 
 export default class Header extends Component<Props> {
   props: Props;
 
   render() {
+    const { handleToggle } = this.props;
+
     return (
       <div className={styles.header}>
         <div className={styles.menuTrigger}>
-          <i className="fa fa-bars" />
+          <i className="fa fa-bars" onClick={handleToggle} />
         </div>
         <div className={styles.right}>
           <div className={styles.controls}>

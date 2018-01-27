@@ -26,7 +26,7 @@ export default class Sidebar extends Component<Props> {
 
     return (
       <div className={`${style.container} ${show ? style.show : ''}`} onClick={this.handleClose}>
-        lalla用这个开源组件 https://github.com/negomi/react-burger-menu
+        用这个开源组件 https://github.com/negomi/react-burger-menu
       </div>
     );
   }
