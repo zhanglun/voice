@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { route, Link } from 'react-router-dom';
+import { BrowserRouter as Route, Link } from 'react-router-dom';
+import CounterPage from '../../containers/CounterPage';
+import VolsPage from '../../containers/VolsPage';
 
 import style from './Sidebar.less';
 
@@ -26,7 +28,11 @@ export default class Sidebar extends Component<Props> {
 
     return (
       <div className={`${style.container} ${show ? style.show : ''}`} onClick={this.handleClose}>
-        用这个开源组件 https://github.com/negomi/react-burger-menu
+        <Link to="/vols">to Vols</Link>
+        <Link to="/">to Home</Link>
+        <Link to="/counter">to Counter</Link>
+        <Route path="/vols" component={VolsPage} />
+        <Route path="/counter" component={CounterPage} />
       </div>
     );
   }
