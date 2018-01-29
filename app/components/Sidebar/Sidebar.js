@@ -3,7 +3,7 @@ import { BrowserRouter as Route, Link } from 'react-router-dom';
 import CounterPage from '../../containers/CounterPage';
 import VolsPage from '../../containers/VolsPage';
 
-import style from './Sidebar.less';
+import styles from './Sidebar.less';
 
 type Props = {
   show: boolean,
@@ -27,10 +27,25 @@ export default class Sidebar extends Component<Props> {
     const { show } = this.props;
 
     return (
-      <div className={`${style.container} ${show ? style.show : ''}`} onClick={this.handleClose}>
-        <Link to="/vols">to Vols</Link>
-        <Link to="/">to Home</Link>
-        <Link to="/counter">to Counter</Link>
+      <div className={`${styles.container} ${show ? styles.show : ''}`} onClick={this.handleClose}>
+        <div className={styles.nav}>
+          <ul className={styles['nav__inner--ghost']}>
+          </ul>
+          <ul className={styles.nav__inner}>
+            <li className={styles['nav-item']}>
+              <Link className={styles['nav-link']} to="/vols">正在播放</Link>
+            </li>
+            <li className={styles['nav-item']}>
+              <Link className={styles['nav-link']} to="/vols">期刊</Link>
+            </li>
+            <li className={styles['nav-item']}>
+              <Link className={styles['nav-link']} to="/">分类</Link>
+            </li>
+            <li className={styles['nav-item']}>
+              <Link className={styles['nav-link']} to="/counter">to Counter</Link>
+            </li>
+          </ul>
+        </div>
         <Route path="/vols" component={VolsPage} />
         <Route path="/counter" component={CounterPage} />
       </div>

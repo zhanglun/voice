@@ -2,7 +2,6 @@
   width: 400px;
   height: 100%;
   background: #fff;
-  box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   right: 0;
@@ -15,4 +14,36 @@
 
 .show {
   transform: translateX(0);
+}
+
+.nav {
+  height: 100%;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.nav__inner {
+  padding-left: 76px;
+  padding-top: 1px;
+  margin: 0;
+
+  &--ghost {
+    height: 22%;
+  }
+}
+
+.nav-item {
+  margin: 30px 0;
+}
+
+.nav-link {
+  color: rgba(0, 0, 0, 0.65);
+
+  &:link {
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  &:hover {
+    color: rgba(0, 0, 0, 1);
+  }
 }
