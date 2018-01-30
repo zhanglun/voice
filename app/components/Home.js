@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import CounterPage from '../containers/CounterPage';
 import VolsPage from '../containers/VolsPage';
 import Header from './Header/Header';
@@ -11,8 +11,7 @@ import styles from './Home.css';
 
 type Props = {
   home: object,
-  toggleSidebar: () => void,
-  children: React.Node
+  toggleSidebar: () => void
 };
 
 export default class Home extends Component<Props> {
@@ -31,13 +30,9 @@ export default class Home extends Component<Props> {
         <Header handleToggle={toggleSidebar} />
         <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
         <div className={styles.inner} data-tid="container">
-          {this.props.children}
+          <Route path="/vols" component={VolsPage} />
+          <Route path="/counter" component={CounterPage} />
         </div>
-        <Link className={styles['nav-link']} to="/vols">正在播放</Link>
-        <Link className={styles['nav-link']} to="/counter">to Counter</Link>
-
-        <Route path="/vols" component={VolsPage} />
-        <Route path="/counter" component={CounterPage} />
       </div>
     );
   }

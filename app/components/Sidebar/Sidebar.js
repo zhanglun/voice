@@ -46,8 +46,6 @@ export default class Sidebar extends Component<Props> {
             </li>
           </ul>
         </div>
-        <Route path="/vols" component={VolsPage} />
-        <Route path="/counter" component={CounterPage} />
       </div>
     );
   }
