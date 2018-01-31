@@ -1,9 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import CounterPage from '../containers/CounterPage';
 import VolsPage from '../containers/VolsPage';
+import VolDetailPage from './VolDetail';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 
@@ -30,7 +31,8 @@ export default class Home extends Component<Props> {
         <Header handleToggle={toggleSidebar} />
         <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
         <div className={styles.inner} data-tid="container">
-          <Route path="/vols" component={VolsPage} />
+          <Route exact path="/vols" component={VolsPage} />
+          <Route path="/vols/:id" component={VolDetailPage} />
           <Route path="/counter" component={CounterPage} />
         </div>
       </div>

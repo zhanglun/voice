@@ -33,13 +33,13 @@ export default class Sidebar extends Component<Props> {
           </ul>
           <ul className={styles.nav__inner}>
             <li className={styles['nav-item']}>
-              <Link className={styles['nav-link']} to="/vols">正在播放</Link>
+              <Link className={styles['nav-link']} to="/playing">正在播放</Link>
             </li>
             <li className={styles['nav-item']}>
               <Link className={styles['nav-link']} to="/vols">期刊</Link>
             </li>
             <li className={styles['nav-item']}>
-              <Link className={styles['nav-link']} to="/">分类</Link>
+              <Link className={styles['nav-link']} to="/tags">分类</Link>
             </li>
             <li className={styles['nav-item']}>
               <Link className={styles['nav-link']} to="/counter">to Counter</Link>

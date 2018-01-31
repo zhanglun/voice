@@ -54,7 +54,6 @@ a:hover {
   content: "";
   background-image: url("./statics/images/1.jpg");
   background-size: cover;
-  background-color: red;
   margin: -30px;
   filter: blur(15px);
   position: absolute;
