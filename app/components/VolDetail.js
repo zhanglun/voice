@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './VolDetail.less';
 
-type Props = {};
+type Props = {
+  match: {}
+};
 
 export default class Home extends Component<Props> {
   props: Props;
@@ -11,23 +13,28 @@ export default class Home extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      detail: [],
+      detail: {},
     };
   }
 
   componentDidMount() {
+    this.initParams();
     this.fetchVolDetail();
   }
 
+  initParams() {
+    const { params } = this.props.match;
+
+    this.setState({ ...params });
+  }
+
   fetchVolDetail() {
-    window.fetch('http://198.13.46.251:9527/api/luoo/vols', {
+    console.log(this.state);
+    window.fetch(`http://198.13.46.251:9527/api/luoo/vols/${this.props.match.params.id}`, {
       method: 'GET'
     }).then(response => response.json()).then((body) => {
-      body.forEach((item) => {
-        item.title = item.title.replace(/-落网/, '');
-      });
-
-      this.setState({ vols: body });
+      console.log(body);
+      this.setState({ detail: body });
 
       return body;
     });
@@ -39,7 +46,18 @@ export default class Home extends Component<Props> {
     return (
       <div className={styles.container}>
         <div className={styles.inner} data-tid="vols">
-          <h1>Vol Detail</h1>
+          <h1>Vol Detail{detail.id}</h1>
+          <div className={styles.info}>
+            <div className={styles.info__cover}>
+              <img className={styles['info__cover-image']} src={detail.cover} alt={detail.title} />
+            </div>
+            <div className={styles.info__content}>
+              <div className={styles['info__content-title']}>{detail.title}</div>
+              <div className={styles['info__content-desc']}>
+                <div dangerouslySetInnerHTML={{__html: detail.description}}></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
