@@ -1,17 +1,72 @@
+.inner {
+  margin: 30px auto 0;
+  width: 960px;
+}
+
 .info {
   display: flex;
+
   &__cover {
-    width: 200px;
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
+    margin-right: 20px;
+
+    &-image {
+      width: 450px;
+      height: 320px;
+      clip-path: inset(0 65px 0 65px);
+      margin-left: -65px;
+    }
   }
 
   &__content {
     &-title {
-      font-size: 20px;
+      font-size: 28px;
       color: #fff;
     }
 
     &-desc {
       font-size: 13px;
     }
+  }
+}
+
+.tracklist {
+  margin-top: 40px;
+}
+
+.track-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  margin: 6px 0;
+  color: #fff;
+
+  &__order {
+    width: 30px;
+    text-align: right;
+    &::after {
+      content: ".";
+    }
+    margin-right: 20px;
+  }
+
+  &__title {
+    width: 300px;
+    margin: 0 20px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__artist {
+    width: 200px;
+  }
+
+  &__album {
+    width: 300px;
   }
 }

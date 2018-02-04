@@ -27,7 +27,7 @@ h2 {
 }
 
 p {
-  font-size: 24px;
+  font-size: 12px;
 }
 
 li {
@@ -52,22 +52,25 @@ a:hover {
   right: 0;
   bottom: 0;
   left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: bgAni 18s infinite;
 }
 
-.bg::after {
+.bg::before {
   content: "";
   background-image: url("./statics/images/1.jpg");
   background-size: cover;
-  margin: -30px;
-  filter: blur(15px);
+  /*margin: -30px;*/
+  box-shadow: inset 0 0 200px #000;
+  filter: blur(20px);
+  animation: blurAni 24s infinite;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  /*z-index: -1;*/
 }
-
 
 #root {
   width: 100%;
@@ -95,4 +98,53 @@ a:hover {
 .example-leave.example-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+@keyframes scrolling-text {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes blurAni {
+  0% {
+    filter: blur(20px);
+  }
+  25% {
+    filter: blur(5px);
+  }
+  50% {
+    filter: blur(15px);
+  }
+  75% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(20px);
+  }
+}
+
+
+@keyframes bgAni {
+  0% {
+    background-color: rgba(0,0,0,.6);
+  }
+  17% {
+    background-color: rgba(0,0,0,.7);
+  }
+  33% {
+    background-color: rgba(0,0,0,.9);
+  }
+  50% {
+    background-color: rgba(0,0,0,.5);
+  }
+  67% {
+    background-color: rgba(0,0,0,.8);
+  }
+  100% {
+    background-color: rgba(0,0,0,.6);
+  }
 }
