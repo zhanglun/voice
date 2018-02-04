@@ -2,21 +2,47 @@
 }
 
 .inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+@size: 200px;
 
 .item {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  width: @size;
 
+  .sizer() {
+    width: @size;
+    height: @size;
+  }
   &__cover {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+
     &-image {
-      //width: 200px;
       height: 200px;
+      clip-path: inset(0px 40px 0px 40px);
+      width: 280px;
+      margin-left: -40px;
     }
   }
 
   &__content {
+    width: 100%;
+    padding: 6px;
+    background: #fff;
+    box-sizing: border-box;
+  }
 
+  &__link {
+    font-size: 14px;
+    color: #333;
   }
 
 }

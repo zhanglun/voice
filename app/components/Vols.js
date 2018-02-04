@@ -42,17 +42,21 @@ export default class Home extends Component<Props> {
           {vols.map((vol) => {
             return (
               <div key={vol.id} className={styles.item}>
-                <div className={styles.item__cover}>
-                  <img className={styles['item__cover-image']} src={vol.cover} alt={vol.title} />
-                </div>
-                <div className={styles.item__content}>
-                  <div>
-                    <Link to={`/vols/${vol.vol_id}`}>{vol.title} + {vol.vol_id}</Link>
+                <Link className={styles.item__link} to={`/vols/${vol.vol_id}`}>
+                  <div className={styles.item__cover}>
+                    <img className={styles['item__cover-image']} src={vol.cover} alt={vol.title}/>
                   </div>
-                </div>
+                  <div className={styles.item__content}>
+                    {vol.title}
+                  </div>
+                </Link>
               </div>
             );
           })}
+          <div key={'ghost1'} className={styles.item}>
+          </div>
+          <div key={'ghost2'} className={styles.item}>
+          </div>
         </div>
       </div>
     );
