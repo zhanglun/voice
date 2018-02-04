@@ -56,7 +56,7 @@ a:hover {
   animation: bgAni 18s infinite;
 }
 
-.bg::before {
+.bg-before {
   content: "";
   background-image: url("./statics/images/1.jpg");
   background-size: cover;

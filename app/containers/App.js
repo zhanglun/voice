@@ -12,7 +12,8 @@ export default class App extends React.Component<Props> {
   render() {
     return (
       <div className="App">
-        <div className="bg bg-blur" />
+        <div className="bg-before" />
+        <div className="bg" />
         {this.props.children}
       </div>
     );
