@@ -47,7 +47,7 @@ export default class Home extends Component<Props> {
                 </div>
                 <div className={styles.item__content}>
                   <div>
-                    <Link to={`/vols/${vol.id}`}>{vol.title}</Link>
+                    <Link to={`/vols/${vol.vol_id}`}>{vol.title} + {vol.vol_id}</Link>
                   </div>
                 </div>
               </div>

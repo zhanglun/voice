@@ -8,12 +8,13 @@
   bottom: 0;
   left: 0;
   color: #333;
-  transform: translateX(-440px);
-  transition: transform 0.3s cubic-bezier(0.42, 0, 0.61, 0.68);
+  box-shadow: 0 30px 80px 0 rgba(97, 45, 45, 0.25);
+  transform: translate(-100%, 0%) matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.71, 0.12, 0.17, 0.67);
 }
 
 .show {
-  transform: translateX(0);
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .nav {
