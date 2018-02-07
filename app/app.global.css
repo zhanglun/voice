@@ -11,7 +11,8 @@ html {
 
 body {
   position: relative;
-  color: white;
+  color: #333;
+  background: #F2D7D3;
   height: 100vh;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
@@ -52,24 +53,22 @@ a:hover {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  animation: bgAni 18s infinite;
+  /*background-color: rgba(0, 0, 0, 0.6);*/
+  /*animation: bgAni 18s infinite;*/
 }
 
 .bg-before {
   content: "";
-  background-image: url("./statics/images/1.jpg");
+  /*background-image: url("./statics/images/1.jpg");*/
   background-size: cover;
-  /*margin: -30px;*/
-  box-shadow: inset 0 0 200px #000;
-  filter: blur(20px);
-  animation: blurAni 24s infinite;
+  /*box-shadow: inset 0 0 200px #000;*/
+  /*filter: blur(20px);*/
+  /*animation: blurAni 24s infinite;*/
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  /*z-index: -1;*/
 }
 
 #root {
@@ -104,6 +103,7 @@ a:hover {
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(-100%);
   }
@@ -113,38 +113,46 @@ a:hover {
   0% {
     filter: blur(20px);
   }
+
   25% {
     filter: blur(5px);
   }
+
   50% {
     filter: blur(15px);
   }
+
   75% {
     filter: blur(0);
   }
+
   100% {
     filter: blur(20px);
   }
 }
 
-
 @keyframes bgAni {
   0% {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, 0.6);
   }
+
   17% {
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, 0.7);
   }
+
   33% {
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(0, 0, 0, 0.9);
   }
+
   50% {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
+
   67% {
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, 0.8);
   }
+
   100% {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 }

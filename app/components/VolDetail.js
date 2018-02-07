@@ -39,7 +39,7 @@ export default class Home extends Component<Props> {
       method: 'GET'
     }).then(response => response.json()).then((body) => {
       this.setState({ detail: body });
-      this.setAppBG(body.cover);
+      // this.setAppBG(body.cover);
 
       return body;
     });
