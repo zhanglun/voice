@@ -1,13 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Player from '../components/Player';
+import Home from '../components/Home';
+// import PlayList from '../components/PlayList';
 import * as PlayerActions from '../actions/playList';
 
 
 function mapStateToProps(state) {
   return {
-    player: state.player,
+    play: state.play,
   };
 }
 
@@ -15,4 +16,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(PlayerActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

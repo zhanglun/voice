@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
 import CounterPage from '../../containers/CounterPage';
 import VolsPage from '../../containers/VolsPage';
-import VolDetailPage from '../VolDetail';
+import VolDetailPage from '../VolDetail/index';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import PlayList from '../PlayList/index';

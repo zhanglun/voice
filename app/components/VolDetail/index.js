@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './VolDetail.less';
+import styles from './index.less';
 
 type Props = {
   match: {}
@@ -38,6 +38,8 @@ export default class Home extends Component<Props> {
     window.fetch(`http://198.13.46.251:9527/api/luoo/vols/${this.props.match.params.id}`, {
       method: 'GET'
     }).then(response => response.json()).then((body) => {
+      body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
+      body.description = body.description.replace(/<\/?[^>]*>/g,'');
       this.setState({ detail: body });
       // this.setAppBG(body.cover);
 
@@ -47,6 +49,7 @@ export default class Home extends Component<Props> {
 
   render() {
     let { detail } = this.state;
+    console.log(this.props);
 
     return (
       <div className={styles.container}>
@@ -61,9 +64,9 @@ export default class Home extends Component<Props> {
                 Vols: {detail.vol_number}
                 {detail.created_at}
               </div>
-              {/*<div className={styles['info__content-desc']}>*/}
+              <div className={styles['info__content-desc']}>
               {/*<div dangerouslySetInnerHTML={{__html: detail.description}}></div>*/}
-              {/*</div>*/}
+              </div>
             </div>
           </div>
           <div className={styles.tracklist}>

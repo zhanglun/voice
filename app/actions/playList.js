@@ -4,21 +4,30 @@ export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const REMOVE_TRACK_ALL = 'REMOVE_TRACK_ALL';
 export const PLAY_CONTROL = 'PLAY_CONTROL';
 
-export function addTrack() {
+export function addTrack(track) {
   return {
-
+    type: ADD_TRACK,
+    payload: {
+      track,
+    },
   };
 }
 
-export function removeTrack() {
+export function removeTrack(track, index) {
   return {
-
+    type: REMOVE_TRACK,
+    payload: {
+      track,
+      index,
+    },
   };
 }
 
 export function removeTrackALL() {
   return {
-
+    type: REMOVE_TRACK_ALL,
+    payload: {
+    },
   };
 }
 
