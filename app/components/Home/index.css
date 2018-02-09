@@ -6,6 +6,22 @@
   bottom: 0;
 }
 
+.mask-layer {
+  will-change: opacity;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(37, 33, 32, 0.2);
+  position: fixed;
+  z-index: 2;
+  opacity: 0;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+}
+
 .inner h2 {
   font-size: 5rem;
 }

@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Player from '../components/Player';
-import * as PlayerActions from '../actions/player';
+import * as PlayerActions from '../actions/playList';
 
 
 function mapStateToProps(state) {
