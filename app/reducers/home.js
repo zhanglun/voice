@@ -1,5 +1,5 @@
 // @flow
-import { OPEN_SIDEBAR, CLOSE_SIDEBAR } from '../actions/home';
+import { TOGGLE_SIDEBAR } from '../actions/home';
 
 export type homeStateType = {
   +home: object
@@ -15,10 +15,8 @@ const initialState = {
 
 export default function home(state: object = initialState, action: actionType) {
   switch (action.type) {
-    case OPEN_SIDEBAR:
-      return { ...state, sidebarStatus: true };
-    case CLOSE_SIDEBAR:
-      return { ...state, sidebarStatus: false };
+    case TOGGLE_SIDEBAR:
+      return { ...state, sidebarStatus: action.payload.status };
     default: return state;
   }
 }

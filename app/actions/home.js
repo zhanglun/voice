@@ -1,23 +1,14 @@
 // @flow
 import type { homeStateType, actionType } from '../reducers/home';
 
-export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
-export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const TOOGLE_PLAYLIST = 'TOOGLE_PLAYLIST';
 
-export function openSidebar() {
+export function toggle(status) {
   return {
-    type: OPEN_SIDEBAR,
+    type: TOGGLE_SIDEBAR,
     payload: {
-
-    }
-  };
-}
-
-export function closeSidebar() {
-  return {
-    type: CLOSE_SIDEBAR,
-    payload: {
-
+      status: !status,
     }
   };
 }
@@ -27,9 +18,7 @@ export function toggleSidebar() {
     const { home } = getState();
     const { sidebarStatus } = home;
 
-    console.log('toggleSidebar', home);
-
-    dispatch(sidebarStatus ? closeSidebar() : openSidebar());
+    dispatch(toggle(sidebarStatus));
   };
 }
 

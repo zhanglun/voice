@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 import styles from './Header.less';
 
 type Props = {
@@ -10,7 +8,7 @@ type Props = {
 export default class Header extends Component<Props> {
   props: Props;
 
-  render () {
+  render() {
     const { handleToggle } = this.props;
 
     return (
