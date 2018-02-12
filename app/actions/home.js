@@ -1,8 +1,8 @@
 // @flow
-import type { homeStateType, actionType } from '../reducers/home';
+// import type { homeStateType, actionType } from '../reducers/home';
 
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-export const TOOGLE_PLAYLIST = 'TOOGLE_PLAYLIST';
+export const TOGGLE_PLAYLIST = 'TOGGLE_PLAYLIST';
 
 export function toggle(status) {
   return {
@@ -13,12 +13,33 @@ export function toggle(status) {
   };
 }
 
+export function playlist(status) {
+  return {
+    type: TOGGLE_PLAYLIST,
+    payload: {
+      status: !status,
+    }
+  };
+}
+
+
+/* dispatch */
+
 export function toggleSidebar() {
-  return (dispatch: (action: actionType) => void, getState: () => homeStateType) => {
+  return (dispatch, getState) => {
     const { home } = getState();
     const { sidebarStatus } = home;
 
     dispatch(toggle(sidebarStatus));
+  };
+}
+
+export function togglePlayList() {
+  return (dispatch, getState) => {
+    const { home } = getState();
+    const { playListStatus } = home;
+
+    dispatch(playlist(playListStatus));
   };
 }
 

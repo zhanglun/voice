@@ -1,18 +1,19 @@
 // @flow
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Route, Link, Redirect } from 'react-router-dom';
 import CounterPage from '../containers/CounterPage';
 import VolsPage from '../containers/VolsPage';
 import VolDetailPage from './VolDetail';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
+import PlayList from './PlayList';
 
 import styles from './Home.css';
 
 type Props = {
   home: object,
-  toggleSidebar: () => void
+  toggleSidebar: () => void,
+  togglePlayList: () => void
 };
 
 export default class Home extends Component<Props> {
@@ -24,12 +25,15 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const { toggleSidebar, home } = this.props;
+    const { toggleSidebar, togglePlayList, home } = this.props;
+
+    console.log(this.props);
 
     return (
       <div className={styles.container}>
-        <Header handleToggle={toggleSidebar} />
+        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} />
         <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
+        <PlayList key="playlist" show={home.playListStatus} handleToggle={togglePlayList} />
         <div className={styles.inner} data-tid="container">
           <Route exact path="/vols" component={VolsPage} />
           <Route path="/vols/:id" component={VolDetailPage} />
