@@ -1,4 +1,4 @@
-import { ADD_TRACK, REMOVE_TRACK, REMOVE_TRACK_ALL, PLAY_CONTROL } from '../actions/player';
+import { ADD_TRACK, REMOVE_TRACK, REMOVE_TRACK_ALL, PLAY_CONTROL } from '../actions/playList';
 
 export default function player(state, action) {
   switch (action.type) {

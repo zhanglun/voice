@@ -8,7 +8,7 @@ import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import PlayList from '../PlayList/index';
 
-import styles from './index.css';
+import styles from './index.less';
 
 type Props = {
   home: object,
@@ -46,7 +46,7 @@ export default class Home extends Component<Props> {
     return (
       <div className={styles.container}>
         <div className={`${styles['mask-layer']} ${(home.playListStatus || home.sidebarStatus) ? styles.show : ''}`} onClick={this.toggleMaskLayer} />
-        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} />
+        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} playListStatus={home.playListStatus}/>
         <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
         <PlayList key="playlist" show={home.playListStatus} handleToggle={togglePlayList} />
         <div className={styles.inner} data-tid="container">

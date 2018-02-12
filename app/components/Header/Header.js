@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './Header.less';
 
 type Props = {
+  playListStatus: boolean,
   handleToggleSidebar: () => void,
   handleTogglePlayList: () => void
 };
@@ -10,7 +11,7 @@ export default class Header extends Component<Props> {
   props: Props;
 
   render() {
-    const { handleToggleSidebar, handleTogglePlayList } = this.props;
+    const { playListStatus, handleToggleSidebar, handleTogglePlayList } = this.props;
 
     return (
       <div className={styles.header}>
@@ -39,7 +40,7 @@ export default class Header extends Component<Props> {
               <i className="fa fa-step-forward"/>
             </div>
           </div>
-          <div className={styles.menuTrigger} onClick={handleTogglePlayList}>
+          <div className={`${styles.menuTrigger} ${playListStatus ? styles.menuTriggerOffset : ''}`} onClick={handleTogglePlayList}>
             <i className="fa fa-list"/>
           </div>
         </div>
