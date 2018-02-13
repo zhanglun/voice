@@ -42,6 +42,8 @@ export default class Home extends Component<Props> {
   render() {
     const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus } = this.props;
 
+    console.log(this.props);
+
     return (
       <div className={styles.container}>
         <div className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`} onClick={this.toggleMaskLayer} />

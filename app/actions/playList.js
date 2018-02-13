@@ -1,15 +1,16 @@
-
 export const ADD_TRACK = 'ADD_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const REMOVE_TRACK_ALL = 'REMOVE_TRACK_ALL';
 export const PLAY_CONTROL = 'PLAY_CONTROL';
 
 export function addTrack(track) {
-  return {
-    type: ADD_TRACK,
-    payload: {
-      track,
-    },
+  return (dispatch, getState) => {
+    dispatch({
+      type: ADD_TRACK,
+      payload: {
+        track,
+      },
+    });
   };
 }
 
@@ -23,16 +24,13 @@ export function removeTrack(track, index) {
   };
 }
 
-export function removeTrackALL() {
+export function removeTrackAll() {
   return {
     type: REMOVE_TRACK_ALL,
-    payload: {
-    },
+    payload: {},
   };
 }
 
 export function playControl() {
-  return {
-
-  };
+  return {};
 }

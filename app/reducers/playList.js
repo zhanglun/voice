@@ -4,10 +4,11 @@ const initialState = {
   playList: [],
 };
 
-export default function player(state = initialState, action) {
+export default function player (state = initialState, action) {
   switch (action.type) {
     case ADD_TRACK:
-      // TODO: 添加到列表的头部
+      state.playList.unshift(action.payload.track);
+      
       return { ...state };
     case REMOVE_TRACK:
       return { ...state };
