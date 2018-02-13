@@ -1,11 +1,12 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Vols from '../components/Vols/index';
+import VolDetail from '../components/VolDetail';
 import * as VolsActions from '../actions/vols';
+import { ADD_TRACK } from '../actions/playList';
 
 function mapStateToProps(state) {
   return {
-    counter: state
+    play: state.play,
   };
 }
 
@@ -13,5 +14,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(VolsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Vols);
+export default connect(mapStateToProps, mapDispatchToProps)(VolDetail);
 

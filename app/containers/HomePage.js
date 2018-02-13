@@ -5,7 +5,7 @@ import * as HomeActions from '../actions/home';
 
 function mapStateToProps(state) {
   return {
-    home: state.home
+    ...state.home,
   };
 }
 

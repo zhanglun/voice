@@ -1,10 +1,6 @@
 // @flow
 import { TOGGLE_SIDEBAR, TOGGLE_PLAYLIST } from '../actions/home';
 
-export type homeStateType = {
-  +home: object
-};
-
 export type actionType = {
   +type: string
 };
@@ -12,6 +8,8 @@ export type actionType = {
 const initialState = {
   sidebarStatus: false,
   playListStatus: false,
+  playList: [],
+
 };
 
 export default function home(state: object = initialState, action: actionType) {

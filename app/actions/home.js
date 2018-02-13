@@ -1,6 +1,4 @@
 // @flow
-// import type { homeStateType, actionType } from '../reducers/home';
-
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const TOGGLE_PLAYLIST = 'TOGGLE_PLAYLIST';
 
@@ -42,4 +40,3 @@ export function togglePlayList() {
     dispatch(playlist(playListStatus));
   };
 }
-

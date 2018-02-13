@@ -11,7 +11,8 @@ import PlayList from '../PlayList/index';
 import styles from './index.less';
 
 type Props = {
-  home: object,
+  sidebarStatus: boolean,
+  playListStatus: boolean,
   toggleSidebar: () => void,
   togglePlayList: () => void
 };
@@ -27,28 +28,26 @@ export default class Home extends Component<Props> {
   }
 
   toggleMaskLayer() {
-    const { toggleSidebar, togglePlayList, home } = this.props;
+    const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus } = this.props;
 
-    if (home.sidebarStatus) {
+    if (sidebarStatus) {
       toggleSidebar();
     }
 
-    if (home.playListStatus) {
+    if (playListStatus) {
       togglePlayList();
     }
   }
 
   render() {
-    const { toggleSidebar, togglePlayList, home } = this.props;
-
-    console.log(this.props);
+    const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus } = this.props;
 
     return (
       <div className={styles.container}>
-        <div className={`${styles['mask-layer']} ${(home.playListStatus || home.sidebarStatus) ? styles.show : ''}`} onClick={this.toggleMaskLayer} />
-        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} playListStatus={home.playListStatus}/>
-        <Sidebar key="sidebar" show={home.sidebarStatus} handleToggle={toggleSidebar} />
-        <PlayList key="playlist" show={home.playListStatus} handleToggle={togglePlayList} />
+        <div className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`} onClick={this.toggleMaskLayer} />
+        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} playListStatus={playListStatus}/>
+        <Sidebar key="sidebar" show={sidebarStatus} handleToggle={toggleSidebar} />
+        <PlayList key="playlist" show={playListStatus} handleToggle={togglePlayList} />
         <div className={styles.inner} data-tid="container">
           <Route exact path="/vols" component={VolsPage} />
           <Route path="/vols/:id" component={VolDetailPage} />
