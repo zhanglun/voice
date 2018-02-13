@@ -32,7 +32,8 @@
     "react/self-closing-comp": "off",
     "react/jsx-tag-spacing": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "object-curly-newline": "off"
   },
   "plugins": [
     "flowtype",

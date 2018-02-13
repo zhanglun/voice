@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import HomePage from '../components/Home/index';
 
 type Props = {
   children: React.Node

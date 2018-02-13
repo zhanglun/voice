@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import styles from './index.less';
 
 type Props = {
-  match: {}
+  match: {
+    params: {
+     id: string
+    }
+  }
 };
 
 export default class Home extends Component<Props> {
@@ -39,9 +43,9 @@ export default class Home extends Component<Props> {
       method: 'GET'
     }).then(response => response.json()).then((body) => {
       body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
-      body.description = body.description.replace(/<\/?[^>]*>/g,'');
+      body.description = body.description.replace(/<\/?[^>]*>/g, '');
       this.setState({ detail: body });
-      // this.setAppBG(body.cover);
+      this.setAppBG(body.cover);
 
       return body;
     });
@@ -49,6 +53,7 @@ export default class Home extends Component<Props> {
 
   render() {
     let { detail } = this.state;
+    console.log('this vol detail');
     console.log(this.props);
 
     return (

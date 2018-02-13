@@ -31,7 +31,7 @@ export function removeTrackALL() {
   };
 }
 
-export function playCpntrol() {
+export function playControl() {
   return {
 
   };

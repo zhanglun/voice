@@ -7,9 +7,7 @@ export type actionType = {
 
 const initialState = {
   sidebarStatus: false,
-  playListStatus: false,
-  playList: [],
-
+  playListStatus: false
 };
 
 export default function home(state: object = initialState, action: actionType) {
@@ -17,7 +15,7 @@ export default function home(state: object = initialState, action: actionType) {
     case TOGGLE_SIDEBAR:
       return { ...state, sidebarStatus: action.payload.status };
     case TOGGLE_PLAYLIST:
-      return { ...state, playListStatus: action.payload.status};
+      return { ...state, playListStatus: action.payload.status };
     default: return state;
   }
 }

@@ -1,17 +1,19 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import VolDetail from '../components/VolDetail';
-import * as VolsActions from '../actions/vols';
-import { ADD_TRACK } from '../actions/playList';
+import * as PlayListActions from '../actions/playList';
+
+console.log('VolsActions', PlayListActions);
 
 function mapStateToProps(state) {
+  console.log('voldetailpage', state);
   return {
-    play: state.play,
+    ...state,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(VolsActions, dispatch);
+  return bindActionCreators(PlayListActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VolDetail);

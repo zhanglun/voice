@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
-import CounterPage from '../../containers/CounterPage';
-import VolsPage from '../../containers/VolsPage';
+import { Link } from 'react-router-dom';
 
 import styles from './Sidebar.less';
 
