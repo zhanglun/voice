@@ -18,9 +18,9 @@ type Props = {
   playStatus: boolean,
   currentTrack: object,
   playList: [],
-  play: () => void
-  // onPlayPrevious: () => void,
-  // onPlayNext: () => void
+  play: () => void,
+  onPrevious: () => void,
+  onNext: () => void
 };
 
 export default class Home extends Component<Props> {
@@ -46,13 +46,25 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus, playList, play, playStatus, currentTrack } = this.props;
+    const {
+      toggleSidebar,
+      togglePlayList,
+      sidebarStatus,
+      playListStatus,
+      playList,
+      play,
+      onPrevious,
+      onNext,
+      playStatus,
+      currentTrack,
+    } = this.props;
 
     console.log(this.props);
 
     return (
       <div className={styles.container}>
         <div
+          role="button"
           className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`}
           onClick={this.toggleMaskLayer}
         />
@@ -60,8 +72,11 @@ export default class Home extends Component<Props> {
           handleToggleSidebar={toggleSidebar}
           handleTogglePlayList={togglePlayList}
           playListStatus={playListStatus}
+          currentTrack={currentTrack}
           isPlay={playStatus}
           onPlay={play}
+          onPrevious={onPrevious}
+          onNext={onNext}
         />
         <Sidebar
           key="sidebar"

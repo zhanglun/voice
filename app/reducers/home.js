@@ -1,5 +1,5 @@
 // @flow
-import { TOGGLE_SIDEBAR, TOGGLE_PLAYLIST, PLAY_TRACK } from '../actions/home';
+import { TOGGLE_SIDEBAR, TOGGLE_PLAYLIST, PLAY_TRACK, PLAY_PREVIOUS, PLAY_NEXT } from '../actions/home';
 
 export type actionType = {
   +type: string
@@ -21,6 +21,10 @@ export default function home(state: object = initialState, action: actionType) {
     case TOGGLE_PLAYLIST:
       return { ...state, playListStatus: action.payload.status };
     case PLAY_TRACK:
+      return { ...state, ...action.payload };
+    case PLAY_PREVIOUS:
+      return { ...state, ...action.payload };
+    case PLAY_NEXT:
       return { ...state, ...action.payload };
     default: return state;
   }

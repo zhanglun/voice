@@ -46,7 +46,7 @@ export default class Home extends Component<Props> {
       body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
       body.description = body.description.replace(/<\/?[^>]*>/g, '');
       this.setState({ detail: body });
-      this.setAppBG(body.cover);
+      // this.setAppBG(body.cover);
 
       return body;
     });

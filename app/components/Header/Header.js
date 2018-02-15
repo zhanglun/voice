@@ -5,8 +5,11 @@ type Props = {
   playListStatus: boolean,
   handleToggleSidebar: () => void,
   handleTogglePlayList: () => void,
+  currentTrack: object,
   isPlay: boolean,
-  onPlay: () => void
+  onPlay: () => void,
+  onPrevious: () => void,
+  onNext: () => void
 };
 
 export default class Header extends Component<Props> {
@@ -15,6 +18,8 @@ export default class Header extends Component<Props> {
   constructor(props) {
     super();
     this.handleOnPlay = this.handleOnPlay.bind(this);
+    this.handleOnPrevious = this.handleOnPrevious.bind(this);
+    this.handleOnNext = this.handleOnNext.bind(this);
   }
 
   handleOnPlay() {
@@ -31,8 +36,26 @@ export default class Header extends Component<Props> {
     }
   }
 
+  handleOnPrevious() {
+    const { onPrevious } = this.props;
+
+    onPrevious();
+  }
+
+  handleOnNext() {
+    const { onNext } = this.props;
+
+    onNext();
+  }
+
   render() {
-    const { playListStatus, handleToggleSidebar, handleTogglePlayList, isPlay } = this.props;
+    const {
+      playListStatus,
+      handleToggleSidebar,
+      handleTogglePlayList,
+      isPlay,
+      currentTrack
+    } = this.props;
 
     let switchIcon = null;
 
@@ -51,20 +74,26 @@ export default class Header extends Component<Props> {
         </div>
         <div className={styles.right}>
           <div className={styles['controls-track-info']}>
-            <div className={styles.thumb}/>
+            <div className={styles.thumb}>
+              <img
+                className={styles.thumb__image}
+                src={currentTrack.cover}
+                alt=""
+              />
+            </div>
             <div className={styles.info}>
-              <div className={styles.title}>Friday Comes</div>
-              <div className={styles.artist}>Early</div>
+              <div className={styles.title}>{currentTrack.name}</div>
+              <div className={styles.artist}>{currentTrack.artist}</div>
             </div>
           </div>
           <div className={styles['controls-mini-player']}>
-            <div className={styles['controls-button--backward']}>
+            <div className={styles['controls-button--backward']} onClick={this.handleOnPrevious}>
               <i className="fa fa-step-backward"/>
             </div>
             <div className={styles['controls-button--switch']} onClick={this.handleOnPlay}>
               {switchIcon}
             </div>
-            <div className={styles['controls-button--forward']}>
+            <div className={styles['controls-button--forward']} onClick={this.handleOnNext}>
               <i className="fa fa-step-forward"/>
             </div>
           </div>
