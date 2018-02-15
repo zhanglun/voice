@@ -4,14 +4,43 @@ import styles from './Header.less';
 type Props = {
   playListStatus: boolean,
   handleToggleSidebar: () => void,
-  handleTogglePlayList: () => void
+  handleTogglePlayList: () => void,
+  isPlay: boolean,
+  onPlay: () => void
 };
 
 export default class Header extends Component<Props> {
   props: Props;
 
+  constructor(props) {
+    super();
+    this.handleOnPlay = this.handleOnPlay.bind(this);
+  }
+
+  handleOnPlay() {
+    const { onPlay, isPlay } = this.props;
+
+    onPlay();
+
+    const audio = document.getElementById('audio');
+
+    if (isPlay) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+  }
+
   render() {
-    const { playListStatus, handleToggleSidebar, handleTogglePlayList } = this.props;
+    const { playListStatus, handleToggleSidebar, handleTogglePlayList, isPlay } = this.props;
+
+    let switchIcon = null;
+
+    if (isPlay) {
+      switchIcon = <i className="fa fa-pause" />;
+    } else {
+      switchIcon = <i className="fa fa-play" />;
+    }
 
     return (
       <div className={styles.header}>
@@ -32,9 +61,8 @@ export default class Header extends Component<Props> {
             <div className={styles['controls-button--backward']}>
               <i className="fa fa-step-backward"/>
             </div>
-            <div className={styles['controls-button--switch']}>
-              <i className="fa fa-play"/>
-              <i className="fa fa-pause"/>
+            <div className={styles['controls-button--switch']} onClick={this.handleOnPlay}>
+              {switchIcon}
             </div>
             <div className={styles['controls-button--forward']}>
               <i className="fa fa-step-forward"/>

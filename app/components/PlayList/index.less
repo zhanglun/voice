@@ -32,3 +32,59 @@
     transform: matrix(1, 0, 0, 1, 0, 0);
   }
 }
+
+.list {
+
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 74px;
+  box-sizing: border-box;
+
+  &.active {
+    background: #EEECED;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  &__cover {
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+    border: 1px solid #dcdcdc;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 auto;
+  }
+
+  &__name {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 24px;
+    color: #333;
+  }
+
+  &__artist {
+    font-size: 14px;
+    color: #333;
+    line-height: 24px;
+  }
+
+  &__duration {
+    font-size: 14px;
+    color: #333;
+  }
+}

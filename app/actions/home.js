@@ -1,6 +1,7 @@
 // @flow
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const TOGGLE_PLAYLIST = 'TOGGLE_PLAYLIST';
+export const PLAY_TRACK = 'PLAY_TRACK';
 
 export function toggle(status) {
   return {
@@ -38,5 +39,25 @@ export function togglePlayList() {
     const { playListStatus } = home;
 
     dispatch(playlist(playListStatus));
+  };
+}
+
+/**
+ * 播放|暂停 播放
+ * @returns {function(*, *)}
+ */
+export function play() {
+  return (dispatch, getState) => {
+    const { home, player } = getState();
+    const { playList } = player;
+    const { currentTrack, playStatus } = home;
+
+    dispatch({
+      type: PLAY_TRACK,
+      payload: {
+        playStatus: !playStatus,
+        currentTrack: currentTrack.url ? currentTrack : playList[0],
+      }
+    });
   };
 }

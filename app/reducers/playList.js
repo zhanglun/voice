@@ -8,7 +8,7 @@ export default function player (state = initialState, action) {
   switch (action.type) {
     case ADD_TRACK:
       state.playList.unshift(action.payload.track);
-      
+
       return { ...state };
     case REMOVE_TRACK:
       return { ...state };

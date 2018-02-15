@@ -14,7 +14,13 @@ type Props = {
   sidebarStatus: boolean,
   playListStatus: boolean,
   toggleSidebar: () => void,
-  togglePlayList: () => void
+  togglePlayList: () => void,
+  playStatus: boolean,
+  currentTrack: object,
+  playList: [],
+  play: () => void
+  // onPlayPrevious: () => void,
+  // onPlayNext: () => void
 };
 
 export default class Home extends Component<Props> {
@@ -40,20 +46,50 @@ export default class Home extends Component<Props> {
   }
 
   render() {
-    const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus } = this.props;
+    const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus, playList, play, playStatus, currentTrack } = this.props;
 
     console.log(this.props);
 
     return (
       <div className={styles.container}>
-        <div className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`} onClick={this.toggleMaskLayer} />
-        <Header handleToggleSidebar={toggleSidebar} handleTogglePlayList={togglePlayList} playListStatus={playListStatus}/>
-        <Sidebar key="sidebar" show={sidebarStatus} handleToggle={toggleSidebar} />
-        <PlayList key="playlist" show={playListStatus} handleToggle={togglePlayList} />
+        <div
+          className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`}
+          onClick={this.toggleMaskLayer}
+        />
+        <Header
+          handleToggleSidebar={toggleSidebar}
+          handleTogglePlayList={togglePlayList}
+          playListStatus={playListStatus}
+          isPlay={playStatus}
+          onPlay={play}
+        />
+        <Sidebar
+          key="sidebar"
+          show={sidebarStatus}
+          handleToggle={toggleSidebar}
+        />
+        <PlayList
+          key="playlist"
+          show={playListStatus}
+          handleToggle={togglePlayList}
+          list={playList}
+        />
+        <audio
+          id="audio"
+          src={currentTrack.url}
+          preload="auto"
+          autoPlay
+        >
+          <track
+            kind="captions"
+            src={currentTrack.url}
+            label="English"
+          />
+        </audio>
         <div className={styles.inner} data-tid="container">
-          <Route exact path="/vols" component={VolsPage} />
-          <Route path="/vols/:id" component={VolDetailPage} />
-          <Route path="/counter" component={CounterPage} />
+          <Route exact path="/vols" component={VolsPage}/>
+          <Route path="/vols/:id" component={VolDetailPage}/>
+          <Route path="/counter" component={CounterPage}/>
         </div>
       </div>
     );
