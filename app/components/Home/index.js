@@ -45,6 +45,13 @@ export default class Home extends Component<Props> {
     }
   }
 
+  componentDidMount() {
+    const audio = document.getElementById('audio');
+    audio.addEventListener('ended', () => {
+      this.props.onNext();
+    });
+  }
+
   render() {
     const {
       toggleSidebar,

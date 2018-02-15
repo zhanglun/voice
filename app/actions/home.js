@@ -1,9 +1,14 @@
 // @flow
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const TOGGLE_PLAYLIST = 'TOGGLE_PLAYLIST';
+
 export const PLAY_TRACK = 'PLAY_TRACK';
 export const PLAY_PREVIOUS = 'PLAY_PREVIOUS';
 export const PLAY_NEXT = 'PLAY_NEXT';
+
+export const ADD_TRACK = 'ADD_TRACK';
+export const REMOVE_TRACK = 'REMOVE_TRACK';
+export const REMOVE_TRACK_ALL = 'REMOVE_TRACK_ALL';
 
 
 export function toggle(status) {
@@ -51,9 +56,8 @@ export function togglePlayList() {
  */
 export function play() {
   return (dispatch, getState) => {
-    const { home, player } = getState();
-    const { playList } = player;
-    const { currentTrack, playStatus } = home;
+    const { home } = getState();
+    const { currentTrack, playStatus, playList  } = home;
 
     dispatch({
       type: PLAY_TRACK,
@@ -68,9 +72,8 @@ export function play() {
 
 export function onPrevious() {
   return (dispatch, getState) => {
-    const { home, player } = getState();
-    const { playList } = player;
-    const { currentTrack } = home;
+    const { home } = getState();
+    const { currentTrack, playList } = home;
 
     let index = 0;
 
@@ -96,9 +99,8 @@ export function onPrevious() {
 
 export function onNext() {
   return (dispatch, getState) => {
-    const { home, player } = getState();
-    const { playList } = player;
-    const { currentTrack } = home;
+    const { home } = getState();
+    const { currentTrack, playList } = home;
 
     let index = 0;
 
@@ -122,3 +124,35 @@ export function onNext() {
   };
 }
 
+export function addTrack(track) {
+  return (dispatch, getState) => {
+    dispatch({
+      type: ADD_TRACK,
+      payload: {
+        track,
+        currentTrack: track,
+      },
+    });
+  };
+}
+
+export function removeTrack(track, index) {
+  return {
+    type: REMOVE_TRACK,
+    payload: {
+      track,
+      index,
+    },
+  };
+}
+
+export function removeTrackAll() {
+  return {
+    type: REMOVE_TRACK_ALL,
+    payload: {},
+  };
+}
+
+export function playControl() {
+  return {};
+}
