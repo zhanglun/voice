@@ -7,6 +7,7 @@ export const PLAY_PREVIOUS = 'PLAY_PREVIOUS';
 export const PLAY_NEXT = 'PLAY_NEXT';
 
 export const ADD_TRACK = 'ADD_TRACK';
+export const ADD_TRACK_AND_PLAY = 'ADD_TRACK_AND_PLAY';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const REMOVE_TRACK_ALL = 'REMOVE_TRACK_ALL';
 
@@ -130,7 +131,17 @@ export function addTrack(track) {
       type: ADD_TRACK,
       payload: {
         track,
-        currentTrack: track,
+      },
+    });
+  };
+}
+
+export function addTrackAndPlay(track) {
+  return (dispatch, getState) => {
+    dispatch({
+      type: ADD_TRACK_AND_PLAY,
+      payload: {
+        track
       },
     });
   };

@@ -4,6 +4,7 @@ import { Route, Link, Redirect } from 'react-router-dom';
 import CounterPage from '../../containers/CounterPage';
 import VolsPage from '../../containers/VolsPage';
 import VolDetailPage from '../../containers/VolDetailPage';
+import PlayingPage from '../Playing';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import PlayList from '../PlayList/index';
@@ -33,6 +34,13 @@ export default class Home extends Component<Props> {
     this.toggleMaskLayer = this.toggleMaskLayer.bind(this);
   }
 
+  componentDidMount() {
+    const audio = document.getElementById('audio');
+    audio.addEventListener('ended', () => {
+      this.props.onNext();
+    });
+  }
+
   toggleMaskLayer() {
     const { toggleSidebar, togglePlayList, sidebarStatus, playListStatus } = this.props;
 
@@ -45,12 +53,6 @@ export default class Home extends Component<Props> {
     }
   }
 
-  componentDidMount() {
-    const audio = document.getElementById('audio');
-    audio.addEventListener('ended', () => {
-      this.props.onNext();
-    });
-  }
 
   render() {
     const {
@@ -71,7 +73,7 @@ export default class Home extends Component<Props> {
     return (
       <div className={styles.container}>
         <div
-          role="button"
+          role="presentation"
           className={`${styles['mask-layer']} ${(playListStatus || sidebarStatus) ? styles.show : ''}`}
           onClick={this.toggleMaskLayer}
         />
@@ -111,6 +113,7 @@ export default class Home extends Component<Props> {
         <div className={styles.inner} data-tid="container">
           <Route exact path="/vols" component={VolsPage}/>
           <Route path="/vols/:id" component={VolDetailPage}/>
+          <Route path="/playing" component={PlayingPage}/>
           <Route path="/counter" component={CounterPage}/>
         </div>
       </div>

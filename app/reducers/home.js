@@ -1,5 +1,5 @@
 // @flow
-import { TOGGLE_SIDEBAR, TOGGLE_PLAYLIST, PLAY_TRACK, PLAY_PREVIOUS, PLAY_NEXT, ADD_TRACK, REMOVE_TRACK, REMOVE_TRACK_ALL } from '../actions/home';
+import { TOGGLE_SIDEBAR, TOGGLE_PLAYLIST, PLAY_TRACK, PLAY_PREVIOUS, PLAY_NEXT, ADD_TRACK, ADD_TRACK_AND_PLAY, REMOVE_TRACK, REMOVE_TRACK_ALL } from '../actions/home';
 
 export type actionType = {
   +type: string
@@ -16,16 +16,20 @@ const initialState = {
 };
 
 export default function home(state: object = initialState, action: actionType) {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case TOGGLE_SIDEBAR:
-      return { ...state, sidebarStatus: action.payload.status };
+      return { ...state, sidebarStatus: payload.status };
     case TOGGLE_PLAYLIST:
-      return { ...state, playListStatus: action.payload.status };
-
+      return { ...state, playListStatus: payload.status };
     case ADD_TRACK:
-      state.playList.unshift(action.payload.track);
+      state.playList.push(payload.track);
 
-      const { currentTrack } = action.payload;
+      return { ...state };
+    case ADD_TRACK_AND_PLAY:
+      state.playList.unshift(payload.track);
+
+      const { currentTrack } = payload;
 
       return { ...state, currentTrack };
     case REMOVE_TRACK:
@@ -34,11 +38,11 @@ export default function home(state: object = initialState, action: actionType) {
       return { ...state };
 
     case PLAY_TRACK:
-      return { ...state, ...action.payload };
+      return { ...state, ...payload };
     case PLAY_PREVIOUS:
-      return { ...state, ...action.payload };
+      return { ...state, ...payload };
     case PLAY_NEXT:
-      return { ...state, ...action.payload };
+      return { ...state, ...payload };
     default: return state;
   }
 }

@@ -46,7 +46,7 @@ export default class Home extends Component<Props> {
       body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
       body.description = body.description.replace(/<\/?[^>]*>/g, '');
       this.setState({ detail: body });
-      // this.setAppBG(body.cover);
+      this.setAppBG(body.cover);
 
       return body;
     });
@@ -54,7 +54,7 @@ export default class Home extends Component<Props> {
 
   render() {
     const { detail } = this.state;
-    const { addTrack } = this.props;
+    const { addTrack, addTrackAndPlay } = this.props;
 
     return (
       <div className={styles.container}>
@@ -79,7 +79,12 @@ export default class Home extends Component<Props> {
               return (
                 <div className={styles['track-item']} key={track.name}>
                   <div className={styles['track-item__order']}>{track.order_id}</div>
-                  <div className={styles['track-item__title']} onClick={() => addTrack(track)}>{track.name}</div>
+                  <div
+                    role="presentation"
+                    className={styles['track-item__title']}
+                    onClick={() => addTrack(track)}
+                  >{track.name}
+                  </div>
                   <div className={styles['track-item__artist']}>{track.artist}</div>
                   <div className={styles['track-item__album']}>{track.album}</div>
                 </div>
