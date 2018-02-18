@@ -39,9 +39,9 @@
 .track-item {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   font-size: 16px;
   margin: 6px 0;
-  color: #fff;
 
   &__order {
     width: 30px;
@@ -67,6 +67,9 @@
   }
 
   &__album {
-    width: 300px;
+    width: 240px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }

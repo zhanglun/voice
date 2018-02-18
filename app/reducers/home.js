@@ -29,9 +29,9 @@ export default function home(state: object = initialState, action: actionType) {
     case ADD_TRACK_AND_PLAY:
       state.playList.unshift(payload.track);
 
-      const { currentTrack } = payload;
+      const { track } = payload;
 
-      return { ...state, currentTrack };
+      return { ...state, currentTrack: track };
     case REMOVE_TRACK:
       return { ...state };
     case REMOVE_TRACK_ALL:

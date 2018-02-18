@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Controls from '../Controls';
 import styles from './index.less';
 
 type Props = {
@@ -9,10 +9,11 @@ type Props = {
      id: string
     }
   },
-  addTrack: () => void
+  addTrack: () => void,
+  addTrackAndPlay: () => void
 };
 
-export default class Home extends Component<Props> {
+export default class VolDetail extends Component<Props> {
   props: Props;
 
   constructor(props) {
@@ -35,9 +36,9 @@ export default class Home extends Component<Props> {
     this.setState({ ...params });
   }
 
-  setAppBG(src) {
-    document.querySelector('.bg-before').style.backgroundImage = `url('${src}')`;
-  }
+  // setAppBG(src) {
+  //   document.querySelector('.bg-before').style.backgroundImage = `url('${src}')`;
+  // }
 
   fetchVolDetail() {
     window.fetch(`http://198.13.46.251:9527/api/luoo/vols/${this.props.match.params.id}`, {
@@ -46,7 +47,7 @@ export default class Home extends Component<Props> {
       body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
       body.description = body.description.replace(/<\/?[^>]*>/g, '');
       this.setState({ detail: body });
-      this.setAppBG(body.cover);
+      // this.setAppBG(body.cover);
 
       return body;
     });
@@ -78,13 +79,15 @@ export default class Home extends Component<Props> {
             {detail.tracks.map((track) => {
               return (
                 <div className={styles['track-item']} key={track.name}>
-                  <div className={styles['track-item__order']}>{track.order_id}</div>
                   <div
                     role="presentation"
                     className={styles['track-item__title']}
                     onClick={() => addTrack(track)}
                   >{track.name}
                   </div>
+                  <Controls
+                    onAddAndPlay={() => addTrackAndPlay(track)}
+                  />
                   <div className={styles['track-item__artist']}>{track.artist}</div>
                   <div className={styles['track-item__album']}>{track.album}</div>
                 </div>
