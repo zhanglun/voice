@@ -17,21 +17,39 @@ const initialState = {
 
 export default function home(state: object = initialState, action: actionType) {
   const { type, payload } = action;
+  const result = [];
+  let index = null;
+
   switch (type) {
     case TOGGLE_SIDEBAR:
       return { ...state, sidebarStatus: payload.status };
     case TOGGLE_PLAYLIST:
       return { ...state, playListStatus: payload.status };
     case ADD_TRACK:
-      state.playList.push(payload.track);
+      index = state.playList.length;
 
-      return { ...state };
+      state.playList.forEach((item, i) => {
+        if (payload.track && item.track_id === payload.track.track_id) {
+          index = i;
+        } else {
+          result.push(item);
+        }
+      });
+
+      // state.playList = state.playList.slice(0, index).concat(state.playList.slice(index + 1));
+      result.push(payload.track);
+
+      return { ...state, playList: result };
     case ADD_TRACK_AND_PLAY:
-      state.playList.unshift(payload.track);
+      state.playList.forEach((item) => {
+        if (!(payload.track && item.track_id === payload.track.track_id)) {
+          result.push(item);
+        }
+      });
 
-      const { track } = payload;
+      result.unshift(payload.track);
 
-      return { ...state, currentTrack: track };
+      return { ...state, playList: result, currentTrack: payload.track };
     case REMOVE_TRACK:
       return { ...state };
     case REMOVE_TRACK_ALL:
