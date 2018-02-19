@@ -23,6 +23,8 @@ export default class VolDetail extends Component<Props> {
         tracks: [],
       },
     };
+
+    this.axiosInstance = window.axiosInstance;
   }
 
   componentDidMount() {
@@ -41,16 +43,21 @@ export default class VolDetail extends Component<Props> {
   // }
 
   fetchVolDetail() {
-    window.fetch(`http://198.13.46.251:9527/api/luoo/vols/${this.props.match.params.id}`, {
-      method: 'GET'
-    }).then(response => response.json()).then((body) => {
-      body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
-      body.description = body.description.replace(/<\/?[^>]*>/g, '');
-      this.setState({ detail: body });
-      // this.setAppBG(body.cover);
+    this.axiosInstance.get(`luoo/vols/${this.props.match.params.id}`)
+      .then((res) => res.data)
+      .then((body) => {
+        body.description = body.description.replace(/<br\s*\/>/ig, '\n\n\n');
+        body.description = body.description.replace(/<\/?[^>]*>/g, '');
 
-      return body;
-    });
+        body.title = body.title.replace(/-落网/ig, '');
+
+        this.setState({ detail: body });
+
+        return body;
+      })
+      .catch(() => {
+
+      });
   }
 
   render() {
@@ -67,32 +74,28 @@ export default class VolDetail extends Component<Props> {
             <div className={styles.info__content}>
               <div className={styles['info__content-title']}>{detail.title}</div>
               <div className={styles['info__content-meta']}>
-                Vols: {detail.vol_number}
-                {detail.created_at}
+                <span className={styles['info__content-meta-vol']}>Vols: {detail.vol_number}</span>
+                <span className={styles['info__content-meta-date']}>{detail.created_at}</span>
               </div>
-              <div className={styles['info__content-desc']}>
-              {/*<div dangerouslySetInnerHTML={{__html: detail.description}}></div>*/}
-              </div>
+              <div className={styles['info__content-desc']} dangerouslySetInnerHTML={{ __html: detail.description }}/>
             </div>
           </div>
           <div className={styles.tracklist}>
-            {detail.tracks.map((track) => {
-              return (
-                <div className={styles['track-item']} key={track.name}>
-                  <div
-                    role="presentation"
-                    className={styles['track-item__title']}
-                    onClick={() => addTrack(track)}
-                  >{track.name}
-                  </div>
-                  <Controls
-                    onAddAndPlay={() => addTrackAndPlay(track)}
-                  />
-                  <div className={styles['track-item__artist']}>{track.artist}</div>
-                  <div className={styles['track-item__album']}>{track.album}</div>
+            {detail.tracks.map((track) => (
+              <div className={styles['track-item']} key={track.name}>
+                <div
+                  role="presentation"
+                  className={styles['track-item__title']}
+                  onClick={() => addTrack(track)}
+                >{track.name}
                 </div>
-              );
-            })}
+                <Controls
+                  onAddAndPlay={() => addTrackAndPlay(track)}
+                />
+                <div className={styles['track-item__artist']}>{track.artist}</div>
+                <div className={styles['track-item__album']}>{track.album}</div>
+              </div>
+              ))}
           </div>
         </div>
       </div>

@@ -12,10 +12,9 @@ html {
 body {
   position: relative;
   color: #333;
-  background: #F2D7D3;
+  /*background: #F2D7D3;*/
   height: 100vh;
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', sans-serif, Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
   -webkit-font-smoothing: antialiased;
 }

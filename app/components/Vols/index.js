@@ -10,9 +10,11 @@ export default class Home extends Component<Props> {
 
   constructor(props) {
     super(props);
+
     this.state = {
       vols: [],
     };
+    this.axiosInstance = window.axiosInstance;
   }
 
   componentDidMount() {
@@ -20,42 +22,46 @@ export default class Home extends Component<Props> {
   }
 
   fetchVols() {
-    window.fetch('http://198.13.46.251:9527/api/luoo/vols', {
-      method: 'GET'
-    }).then(response => response.json()).then((body) => {
-      body.forEach((item) => {
-        item.title = item.title.replace(/-落网/, '');
+    let params = {
+      page_size: 30,
+    };
+    this.axiosInstance.get('luoo/vols', { params })
+      .then((res) => res.data)
+      .then((body) => {
+        body.forEach((item) => {
+          item.title = item.title.replace(/-落网/, '');
+        });
+
+        this.setState({ vols: body });
+
+        return body;
+      })
+      .catch(() => {
+
       });
-
-      this.setState({ vols: body });
-
-      return body;
-    });
   }
 
   render() {
-    let { vols } = this.state;
+    const { vols } = this.state;
 
     return (
       <div className={styles.container}>
         <div className={styles.inner} data-tid="vols">
-          {vols.map((vol) => {
-            return (
-              <div key={vol.id} className={styles.item}>
-                <Link className={styles.item__link} to={`/vols/${vol.vol_id}`}>
-                  <div className={styles.item__cover}>
-                    <img className={styles['item__cover-image']} src={vol.cover} alt={vol.title}/>
-                  </div>
-                  <div className={styles.item__content}>
-                    {vol.title}
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-          <div key={'ghost1'} className={styles.item}>
+          {vols.map((vol) => (
+            <div key={vol.id} className={styles.item}>
+              <Link className={styles.item__link} to={`/vols/${vol.vol_id}`}>
+                <div className={styles.item__cover}>
+                  <img className={styles['item__cover-image']} src={vol.cover} alt={vol.title}/>
+                </div>
+                <div className={styles.item__content}>
+                  {vol.title}
+                </div>
+              </Link>
+            </div>
+            ))}
+          <div key="ghost1" className={styles.item}>
           </div>
-          <div key={'ghost2'} className={styles.item}>
+          <div key="ghost2" className={styles.item}>
           </div>
         </div>
       </div>
