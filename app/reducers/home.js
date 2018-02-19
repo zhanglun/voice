@@ -49,7 +49,7 @@ export default function home(state: object = initialState, action: actionType) {
 
       result.unshift(payload.track);
 
-      return { ...state, playList: result, currentTrack: payload.track };
+      return { ...state, playList: result, currentTrack: payload.track, playStatus: true };
     case REMOVE_TRACK:
       return { ...state };
     case REMOVE_TRACK_ALL:
