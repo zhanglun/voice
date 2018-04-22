@@ -7,7 +7,7 @@ import { configureStore, history } from './store/configureStore';
 import './app.global.css';
 
 window.axiosInstance = axios.create({
-  baseURL: 'http://198.13.46.251:9527/api/',
+  baseURL: 'http://127.0.0.1:3000/api/',
 });
 
 const store = configureStore();

@@ -7,13 +7,13 @@
   justify-content: center;
 }
 
-@size: 200px;
+@size: 160px;
 
 .item {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 10px;
+  margin: 10px 10px 20px 10px;
   width: @size;
 
   .sizer() {
@@ -21,8 +21,8 @@
     height: @size;
   }
   &__cover {
-    width: 200px;
-    height: 200px;
+    width: @size;
+    height: @size;
     overflow: hidden;
 
     &-image {
